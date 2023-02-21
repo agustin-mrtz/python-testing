@@ -1,5 +1,5 @@
 from typing import Callable
-
+from typing import Optional
 from pyre_extensions import ParameterSpecification
 
 def to_seconds(milliseconds: List[float]) -> List[int]:
@@ -52,3 +52,12 @@ class Foo:
 
 def f(foo: Foo) -> None:
     foo.x = "abc"
+
+
+def foo(x: Optional[int]) -> bool:
+    return x < 0  # type error: Optional[int] is not a supported operand
+
+def bar(x: Optional[int]) -> bool:
+    if x:
+        return x < 0  # no type error
+    return False
