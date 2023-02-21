@@ -45,3 +45,10 @@ def size_of_child1(child1: Child1) -> int:
     return child1.size
 
 print_child2_size(size_of_child1)
+
+
+class Foo:
+    x: int = 0
+
+def f(foo: Foo) -> None:
+    foo.x = "abc"
