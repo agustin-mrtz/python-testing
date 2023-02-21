@@ -26,3 +26,22 @@ def bad1(f: Callable[P, int], *args: P.args) -> int:
 # Error because `*args: P.args` is missing.
 def bad2(f: Callable[P, int], **kwargs: P.kwargs) -> int:
     return f(**kwargs)
+
+
+class Base: pass
+
+class Child1(Base):
+    size: int = 42
+
+# No size field.
+class Child2(Base): pass
+
+def print_child2_size(get_size: Callable[[Base], int]) -> None:
+    child2 = Child2()
+    size = get_size(child2)
+    print(size)
+
+def size_of_child1(child1: Child1) -> int:
+    return child1.size
+
+print_child2_size(size_of_child1)
