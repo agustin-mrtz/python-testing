@@ -61,3 +61,14 @@ def bar(x: Optional[int]) -> bool:
     if x:
         return x < 0  # no type error
     return False
+
+
+class A:
+    @staticmethod
+    def foo() -> int:
+        pass
+
+class B(A):
+    @classmethod # Non-static method `B.foo` cannot override a static method defined in `A`.
+    def foo(cls) -> int:
+        pass
