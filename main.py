@@ -1,6 +1,9 @@
 from typing import Callable
 from typing import Optional
 from pyre_extensions import ParameterSpecification
+from emoji import emojize
+
+print(emojize(":thumbs_up:"))
 
 def to_seconds(milliseconds: List[float]) -> List[int]:
     return [int(x/1000.0) for x in milliseconds]
